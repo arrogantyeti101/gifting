@@ -1,14 +1,18 @@
 class Person
-  attr_accessor :is_gifted, :name, :recipient
+  attr_reader   :is_gifted, :name
+  attr_accessor :recipient
+
+  def initialize(name)
+    @name = name
+    @is_gifted = false
+    @recipient = nil
+  end
 end
 
 def set_up_array
   @participants = []
   ARGV.shuffle.each do |a|
-    p = Person.new
-    p.name = a
-    p.is_gifted = false
-    @participants.push(p)
+    @participants << Person.new(a)
   end
 end
 
